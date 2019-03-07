@@ -1,0 +1,5 @@
+<view>{{now_title}}</view>
+
+<view wx:for="{{lists}}">
+    <view bindtap='nav2' data-info="{{item}}">{{item.back_name}}</view>
+</view>

@@ -1,0 +1,5 @@
+<!--pages/main/main.wxml-->
+
+<view wx:for="{{main_list}}" wx:for-item="item">
+    <view bindtap='nav1' data-info="{{item}}">{{item.name}}</view>
+</view>

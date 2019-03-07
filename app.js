@@ -5,6 +5,8 @@ App({
     wx.cloud.init()
   },
   globalData: {
-    // userInfo: null
+    temp:{
+        list1:[]
+    }
   }
 })
