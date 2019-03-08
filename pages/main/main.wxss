@@ -5,3 +5,11 @@ page{
     height:100%;
     background-color: rgb(219,209,199);
 }
+
+#bg_img{
+    width:466rpx;
+    height:442rpx;
+    position: relative;
+    left:3rpx;
+    top:43rpx;
+}
