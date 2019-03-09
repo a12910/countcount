@@ -1,2 +1,30 @@
 <!--comp/texts/texts.wxml-->
-<text>comp/texts/texts.wxml</text>
+
+<view wx:for="{{datas}}" wx:for-item="row" style="width:{{wid==0?'100%':wid+'rpx'}}">
+    <view wx:if="{{row.type=='3'}}">
+        <scroll-view scroll-x style="width:{{wid==0?'100%':wid+'rpx'}};height:{{row.height}}rpx">
+            <image src='{{row.path}}' style="width:{{row.width}}rpx;height:{{row.height}}rpx"></image>
+        </scroll-view>
+        
+        <!-- <view wx:else style="width:{{row.width}}rpx;height:{{row.height}}rpx"></view> -->
+    </view>
+    <view wx:else style="display:flex;width:100%;flex-wrap:wrap">
+        <view wx:for="{{row}}" wx:for-item="item1">
+            <view wx:if="{{item1.type=='0'}}" style="font-size:{{fsize}}rpx">{{item1.text}}</view>
+            <view wx:elif="{{item1.type=='2'}}" style="display:flex;">
+                <view style="font-size:{{fsize}}rpx">{{item1.text}}</view>
+                <view>
+                    <view style="height:{{fsize/6}}rpx"></view>
+                    <view style="font-size:{{fsize/3}}rpx" wx:if="{{item1.up!=undefined}}">{{item1.up}}</view>
+                    <view style="height:{{fsize/3}}rpx;" wx:else></view>
+                    <view style="height:{{fsize/3}}rpx"></view>
+                    <view style="font-size:{{fsize/3}}rpx" wx:if="{{item1.down!=undefined}}">{{item1.down}}</view>
+                    <view style="height:{{fsize/3}}rpx" wx:else></view>
+                    <view style="font-size:{{fsize/6}}rpx" class="down2" wx:if="{{item1.down2!=undefined}}">{{item1.down2}}</view>
+                </view>
+                <view style="width:{{fsize/6}}rpx"></view>
+            </view>
+            <view wx:elif="{{item1.type=='4'}}" style="width:{{item1.length*10}}rpx"></view>
+        </view>
+    </view>
+</view>

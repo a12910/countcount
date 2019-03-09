@@ -1,6 +1,6 @@
 // pages/main/main.js
 const app = getApp()
-const db=wx.cloud.database()
+// const db=wx.cloud.database()
 
 Page({
 

@@ -1,7 +1,9 @@
-<view>{{now_title}}</view>
+<!-- <view>{{now_title}}</view>
 <template name='char'>
 
 </template>
 <view wx:for="{{lists}}">
     <view bindtap='nav2' data-info="{{item}}">{{item.back_name}}</view>
-</view>
+</view> -->
+
+<texts datas='{{data_test}}'></texts>

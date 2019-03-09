@@ -1,1 +1,7 @@
 /* pages/second/second.wxss */
+
+page{
+    width:100%;
+    height:100%;
+    background-color: rgb(211,199,186);
+}

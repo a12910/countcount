@@ -1,9 +1,8 @@
 {
-    "pages": [
+    "pages": ["pages/second/second",
         "pages/main/main",
         "pages/index/index",
-        "pages/logs/logs",
-        "pages/second/second"
+        "pages/logs/logs"        
     ],
     "window": {
         "backgroundTextStyle": "light",

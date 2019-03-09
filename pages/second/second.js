@@ -12,9 +12,6 @@ function update_page(data) {
 }
 
 Page({
-
-
-
     /**
      * 页面的初始数据
      */
@@ -25,7 +22,8 @@ Page({
             id:'EQUA00000',
             intro:''
         },
-        now_title: ''
+        now_title: '',
+        data_test:[],
     },
 
     /**
@@ -58,19 +56,24 @@ Page({
     },
 
     onLoad: function(options) {
-        console.log(options)
-        var id = options.second_id
-        var _this = this
-        var send_data = {
-            currentTarget: {
-                dataset: {
-                    info: {
-                        back_id: id
-                    }
-                }
-            }
-        }
-        this.nav2(send_data)
+        var t = require('../../utils/parse_texts.js')
+        this.setData({
+            data_test:t.parse_text()
+        })
+        
+        // console.log(options)
+        // var id = options.second_id
+        // var _this = this
+        // var send_data = {
+        //     currentTarget: {
+        //         dataset: {
+        //             info: {
+        //                 back_id: id
+        //             }
+        //         }
+        //     }
+        // }
+        // this.nav2(send_data)
 
     },
 

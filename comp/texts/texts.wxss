@@ -1,1 +1,14 @@
 /* comp/texts/texts.wxss */
+
+.fonts{
+    font-family: 'Times New Roman', Times, serif;
+
+}
+
+
+
+.down2{
+    position: relative;
+    /* top:-10rpx; */
+    left:10rpx;
+}

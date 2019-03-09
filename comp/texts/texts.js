@@ -1,17 +1,30 @@
 // comp/texts/texts.js
+const app = getApp()
 Component({
     /**
      * 组件的属性列表
      */
     properties: {
-        datas:[]
+        datas:{
+            type:Array,
+            value:[]
+        },
+        fsize:{
+            type:Number,
+            value:30
+        },
+        wid:{
+            type:Number,
+            value:0
+        }
+
     },
 
     /**
      * 组件的初始数据
      */
     data: {
-        
+
     },
 
     /**
