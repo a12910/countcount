@@ -20,6 +20,11 @@ Page({
      */
     data: {
         lists: [],
+        now_info:{
+            name:'线性空间',
+            id:'EQUA00000',
+            intro:''
+        },
         now_title: ''
     },
 

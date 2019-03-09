@@ -1,6 +1,9 @@
 <!--pages/main/main.wxml-->
 <image src='../../png/bg1.png' id='bg_img'></image>
-
-<view wx:for="{{main_list}}" wx:for-item="item">
-    <view bindtap='nav1' data-info="{{item}}">{{item.name}}</view>
+<view id="main_blocks">
+    <view wx:for="{{main_list}}" wx:for-item="item" style="height:70rpx;display:flex">
+        <view class='point'>·</view>
+        <!-- <view style="width:10rpx;"></view> -->
+        <view bindtap='nav1' data-info="{{item}}" class='main_block'>{{item.name}}</view>
+    </view>
 </view>
