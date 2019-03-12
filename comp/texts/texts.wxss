@@ -1,7 +1,7 @@
 /* comp/texts/texts.wxss */
 
 .fonts{
-    font-family: 'Times New Roman', Times, serif;
+    font-weight: 300;
 
 }
 
@@ -11,4 +11,11 @@
     position: relative;
     /* top:-10rpx; */
     left:10rpx;
+}
+
+.imgs{
+   width:100%;
+   display:flex;
+   justify-content: center;
+
 }

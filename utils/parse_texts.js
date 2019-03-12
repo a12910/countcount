@@ -1,4 +1,4 @@
-var text1 = ' 线性空间&线性变换向量空间又称线性空间，{2|a|1|1}是线性代数的中心内容和基本概念之一。{1}在解析几何里引入向量概念后，{3|xx.png|104|249}使许多问题的处理变得更为简洁和清晰，{1}在此基础上的进一步抽象化，{1}形成了与域相联系的向量空间概念。'
+var text1 = '线性空间&线性变换向量空间又称线性空间，{2|a|1|1}是线性代数的中心内容和基本概念之一。{1}在解析几何里引入向量概念后，{3|xx.png|104|249}使许多问题的处理变得更为简洁和清晰，在此基础上的进一步抽象化，形成了与域相联系的向量空间概念。'
 const app = getApp()
 
 function parse_text() {
@@ -8,7 +8,13 @@ function parse_text() {
     var text = text1
     var rtext = []
     var rtext2 = []
-    var temp2 = []
+    
+    var defalt_blank = {
+        type: '4',
+        length: 4
+    }//首行缩进
+    var temp2 = [defalt_blank]
+
     while (text.indexOf("{") > 0) {
         var temp = text.substring(0, text.indexOf("{"))
         temp = temp.split('')
@@ -23,7 +29,7 @@ function parse_text() {
         temp = temp.split('|')
         if (temp[0] == '1') {
             rtext.push(temp2)
-            temp2 = []
+            temp2 = [defalt_blank]
         } else if (temp[0] == '3') {
             rtext.push(temp2)
             rtext.push({
@@ -33,7 +39,7 @@ function parse_text() {
                 height: Number(temp[2]) / info.pRatio*4,
                 // is_load: false
             })
-            temp2 = []
+            temp2 = [defalt_blank]
         } else if (temp[0] == '2') {
             temp2.push({
                 type: '2',

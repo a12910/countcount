@@ -18,9 +18,7 @@ Page({
     data: {
         lists: [],
         now_info:{
-            name:'线性空间',
-            id:'EQUA00000',
-            intro:''
+
         },
         now_title: '',
         data_test:[],
@@ -57,10 +55,17 @@ Page({
 
     onLoad: function(options) {
         var t = require('../../utils/parse_texts.js')
+        var now1 = {
+            name: '线性方程组',
+            id: 'EQUA00000',
+            introduction: t.parse_text(),
+            is_info: true,
+        }
+            
         this.setData({
-            data_test:t.parse_text()
+            now_info:now1
         })
-        
+
         // console.log(options)
         // var id = options.second_id
         // var _this = this

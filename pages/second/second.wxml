@@ -5,5 +5,14 @@
 <view wx:for="{{lists}}">
     <view bindtap='nav2' data-info="{{item}}">{{item.back_name}}</view>
 </view> -->
+<view id='main_title2'>{{now_info.name}}</view>
+<view style="height:135rpx"></view>
+<view style="display:flex;z-index:1000">
+    <view id='main_title'>{{now_info.name}}</view>
+    <view id="title_block"></view>
+</view>
 
-<texts datas='{{data_test}}'></texts>
+<view wx:if="{{now_info.is_info}}" id="info1">
+    <texts datas="{{now_info.introduction}}" fsize='30'></texts>
+</view>
+<!-- <texts datas='{{data_test}}'></texts> -->

@@ -1,6 +1,7 @@
 {
-    "pages": ["pages/second/second",
+    "pages": [
         "pages/main/main",
+        "pages/second/second",
         "pages/index/index",
         "pages/logs/logs"        
     ],

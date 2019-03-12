@@ -1,10 +1,11 @@
 <!--comp/texts/texts.wxml-->
 
 <view wx:for="{{datas}}" wx:for-item="row" style="width:{{wid==0?'100%':wid+'rpx'}}">
-    <view wx:if="{{row.type=='3'}}">
-        <scroll-view scroll-x style="width:{{wid==0?'100%':wid+'rpx'}};height:{{row.height}}rpx">
-            <image src='{{row.path}}' style="width:{{row.width}}rpx;height:{{row.height}}rpx"></image>
-        </scroll-view>
+    <view wx:if="{{row.type=='3'}}" style="" class='imgs'>
+        <!-- <scroll-view scroll-x style="width:{{wid==0?'100%':wid+'rpx'}};height:{{row.height}}rpx">
+            
+        </scroll-view> -->
+        <image src='{{row.path}}' style="width:{{row.width}}rpx;height:{{row.height}}rpx" ></image>
         
         <!-- <view wx:else style="width:{{row.width}}rpx;height:{{row.height}}rpx"></view> -->
     </view>
@@ -27,4 +28,5 @@
             <view wx:elif="{{item1.type=='4'}}" style="width:{{item1.length*10}}rpx"></view>
         </view>
     </view>
+    <view style="height:{{fsize/2}}rpx"></view>
 </view>

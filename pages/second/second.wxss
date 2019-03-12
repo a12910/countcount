@@ -5,3 +5,54 @@ page{
     height:100%;
     background-color: rgb(211,199,186);
 }
+
+view{
+    
+}
+
+#main_title{
+	width:667rpx;
+	font-size: 80rpx;
+	color:#4a4a4a;
+	text-align: right;
+    font-weight: 800;
+}
+
+#title_block{
+	position: relative;
+	left:20rpx;
+	width:20rpx;
+	background-color:#989898;
+	top:20rpx;
+	height:80rpx;
+
+}
+
+#main_title2{
+	width: 400rpx;
+	font-size: 280rpx;
+	opacity: 0.2;
+	color:#999;
+	z-index:100;
+	position: absolute;
+	left:300rpx;
+	top:-100rpx;
+    font-weight: 800;
+     font-family:serif;
+
+    overflow:hidden; 
+ 
+    /*text-overflow:ellipsis; 文字隐藏后添加省略号*/
+ 
+    white-space:nowrap; 
+}
+
+#info1{
+	width:550rpx;
+	position: relative;
+	left:100rpx;
+	top:70rpx;
+	height:900rpx;
+	/*background-color: #fff;*/
+
+}
