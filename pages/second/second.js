@@ -2,13 +2,19 @@
 const app = getApp()
 const db = wx.cloud.database()
 
+
+
 function update_page(data) {
     var pages = getCurrentPages() //获取加载的页面
     var _this = pages[pages.length - 1]
 
-    _this.setData({
-        lists: data
-    })
+    _this.setData(data)
+
+    setTimeout(function() {
+        _this.setData({
+            is_info: false
+        })
+    }, 1000)
 }
 
 Page({
@@ -17,68 +23,104 @@ Page({
      */
     data: {
         lists: [],
-        now_info:{
+        now_info: {
 
         },
-        now_title: '',
-        data_test:[],
+        is_info: true,
+        relation1: [],
+        relation2: [],
+
+        menu1: true,
+        history: []
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
-
-    nav2: function(options){
-        var id = options.currentTarget.dataset.info.back_id
-        console.log(options)
-        var _this = this
-        console.log(this.data)
-        wx.cloud.callFunction({
-            name: 'get_relation',
-            data: {
-                select: {
-                    front_id: id
-                }
-
-            },
-            success: (res) => {
-                console.log(res.result.data)
-                _this.data.lists = res.result.data
-                _this.setData({
-                    lists: res.result.data
-                })
-            },
-            fail: console.log
+    to_menu: function(options) {
+        // console.log(this.data)
+        var x = this.data.menu1
+        this.setData({
+            menu1: !x
         })
+    },
+    to_menu2: function() {
+        var x = this.data.menu1
+        if (!x) {
+            this.setData({
+                menu1: !x
+            })
+        }
 
     },
+    nav2: function(options) {
+        var info = options.currentTarget.dataset.info
+        var id = info.back_id
+        console.log(options)
+        var _this = this
+        // console.log(this.data)
+        var infos = app.globalData.temp.list2
+        console.log(infos)
+        infos.forEach(function(item) {
 
-    onLoad: function(options) {
-        var t = require('../../utils/parse_texts.js')
-        var now1 = {
-            name: '线性方程组',
-            id: 'EQUA00000',
-            introduction: t.parse_text(),
-            is_info: true,
-        }
-            
-        this.setData({
-            now_info:now1
+            if (id == item.id) {
+                var send_data = item
+                _this.data.history.push(item)
+                _this.setData({
+                    history: _this.data.history,
+                    now_info: item,
+                    is_info: true
+                })
+
+            }
         })
 
-        // console.log(options)
-        // var id = options.second_id
-        // var _this = this
-        // var send_data = {
-        //     currentTarget: {
-        //         dataset: {
-        //             info: {
-        //                 back_id: id
-        //             }
-        //         }
-        //     }
-        // }
-        // this.nav2(send_data)
+        var up = require('../../utils/update_page.js')
+        up.load_info(id, 'second/second')
+    },
+
+    his_nav: function(options) {
+        var _this = this
+        console.log(options)
+        var info = options.currentTarget.dataset.info
+        this.data.history.push(info)
+
+        _this.setData({
+            history: _this.data.history,
+            now_info: item,
+            is_info: true
+        })
+
+        var up = require('../../utils/update_page.js')
+        up.load_info(info.id, 'second/second')
+
+        this.to_menu()
+    },
+    onLoad: function(options) {
+        var t = require('../../utils/parse_texts.js')
+
+        var info = app.globalData.temp.list1
+        var _this = this
+        app.globalData.list1 = []
+        info.introx = t.parse_text(info.intro)
+
+        this.data.history.push(info)
+        this.setData({
+            now_info: info,
+            history: _this.data.history
+        })
+
+        var _this = this
+        var send_data = {
+            currentTarget: {
+                dataset: {
+                    info: {
+                        back_id: info.id
+                    }
+                }
+            }
+        }
+        this.nav2(send_data)
 
     },
 

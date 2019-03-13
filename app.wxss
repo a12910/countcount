@@ -10,5 +10,5 @@
 } 
 
 view{
-    font-family:serif;
+    /* font-family:serif; */
 }
