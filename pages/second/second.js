@@ -1,7 +1,7 @@
 // pages/second/second.js
 const app = getApp()
 const db = wx.cloud.database()
-
+var moved=[0,0]
 
 
 function update_page(data) {
@@ -37,6 +37,18 @@ Page({
     /**
      * 生命周期函数--监听页面加载
      */
+    his_back:function(options){
+        if(this.data.history.length<2){
+            wx.navigateBack()
+        }else{
+            var x = this.data.history.pop()
+            x = this.data.history.pop()
+            var send_data = {
+                info:x
+            }
+            this.his_nav(send_data)
+        }
+    },
     to_menu: function(options) {
         // console.log(this.data)
         var x = this.data.menu1
@@ -53,7 +65,29 @@ Page({
         }
 
     },
+    move_start:function(options){
+        console.log(options)
+        var info = options.changedTouches[0]
+        moved = [info.pageX,info.pageY]
+    },
+    move_end:function(options){
+        var info = options.changedTouches[0]
+        var moved2 = moved[0]-info.pageX
+        console.log(moved2)
+        if(moved2<-200){
+            this.his_back()
+        }else if(moved2<-50){
+            this.to_menu()
+        }
+    },
+    masks:(options)=>{
+        console.log(options)
+    },
     nav2: function(options) {
+        var info
+        if(options.info!=undefined){
+            info = options.info            
+        }
         var info = options.currentTarget.dataset.info
         var id = info.back_id
         console.log(options)
@@ -62,9 +96,14 @@ Page({
         var infos = app.globalData.temp.list2
         console.log(infos)
         infos.forEach(function(item) {
-
             if (id == item.id) {
-                var send_data = item
+                // var send_data = item
+                _this.data.history.forEach(function (item) {
+                    if (item.id == info.id) {
+                        var index = _this.data.history.indexOf(item)
+                        _this.data.history.splice(index, 1)
+                    }
+                })
                 _this.data.history.push(item)
                 _this.setData({
                     history: _this.data.history,
@@ -81,13 +120,23 @@ Page({
 
     his_nav: function(options) {
         var _this = this
-        console.log(options)
-        var info = options.currentTarget.dataset.info
+        var info
+        if (options.info != undefined) {
+            info = options.info
+        }else{
+            info = options.currentTarget.dataset.info
+        }
+        this.data.history.forEach(function (item) {
+            if (item.id == info.id) {
+                var index = _this.data.history.indexOf(item)
+                _this.data.history.splice(index, 1)
+            }
+        })
         this.data.history.push(info)
 
         _this.setData({
             history: _this.data.history,
-            now_info: item,
+            now_info: info,
             is_info: true
         })
 
@@ -104,7 +153,7 @@ Page({
         app.globalData.list1 = []
         info.introx = t.parse_text(info.intro)
 
-        this.data.history.push(info)
+        // this.data.history.push(info)
         this.setData({
             now_info: info,
             history: _this.data.history

@@ -6,20 +6,22 @@
     <view bindtap='nav2' data-info="{{item}}">{{item.back_name}}</view>
 </view> -->
 
-<view id='side_list'>
+<view id='side_list' >
     <view id='his_title1'>
         <view id='his_title2'>历史记录</view>
     </view>
-    <view wx:for='{{history}}' wx:for-item='item'>
+    <view wx:for='{{history}}' wx:for-item='item' wx:for-index='index' class='his_block {{index==history.length-1?"his_back":""}}'>
         <view style="height:10rpx"></view>
-        <view class='his_block' bindtap='his_nav' data-info='{{item}}'>
-            {{item.name}}
+        <view  class='his_text' bindtap='his_nav' data-info='{{item}}'>
+            ·{{item.name}}
         </view>
         
     </view>
     
 </view>
-<view id='page2' class='{{menu1?"c-state2":"c-state1"}}' >
+
+<view id='page2' class='{{menu1?"c-state2":"c-state1"}}' bindtouchstart='move_start' bindtouchend='move_end'>
+    <view wx:if='{{!menu1}}' id='mask1' bindtap='to_menu'></view>
     <!-- <view id='main_title2'>{{now_info.name}}</view> -->
     <view id='menu' bindtap='to_menu'>
         <image src='../../png/menu.png' id='menu_img' mode='aspectFit'></image>
@@ -30,13 +32,13 @@
         <view id="title_block"></view>
     </view>
 
-    <swiper current="{{is_info?'0':'1'}}" vertical='true' style="height:80%">
+    <swiper current="{{is_info||relation1.length==0?'0':'1'}}" vertical='true' style="height:80%">
         <swiper-item>
             <view id="info1">
                 <texts datas="{{now_info.introx}}" fsize='30'></texts>
             </view>
         </swiper-item>
-        <swiper-item>
+        <swiper-item wx:if="{{relation1.length>0}}">
             <view style="height:130rpx"></view>
             <view class='block1'>
                 <view class='s_title1'>基本内容</view>
