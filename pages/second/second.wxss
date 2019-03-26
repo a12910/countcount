@@ -132,7 +132,7 @@ view{
 	position: absolute;
 	left:0rpx;
 	top:0rpx;
-	background-color: #B8aea4;
+	background-color: rgb(211,199,186);
 }
 
 .c-state1{
@@ -196,6 +196,6 @@ view{
 	width:100%;
 	height:100%;
 	background-color: #000;
-	opacity: 0.3;
+	opacity: 0.2;
 
 }
